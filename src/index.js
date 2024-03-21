@@ -16,7 +16,6 @@ app.get("/api", (req, res) => {
   res.send("Selamat Datang di API ini!");
 });
 
-
 app.use(productRoute);
 
 // GET Endpoint untuk menampilkan semua produk
@@ -41,51 +40,51 @@ app.use(productRoute);
 // });
 
 // PUT Endpoint untuk memperbarui produk berdasarkan ID
-app.put("/products/:id", async (req, res) => {
-  const { id } = req.params;
-  const { name, price, description, image } = req.body;
-  const updatedProduct = await prisma.product.update({
-    where: {
-      id: parseInt(id),
-    },
-    data: {
-      name,
-      price,
-      description,
-      image,
-    },
-  });
-  res.json(updatedProduct);
-});
+// app.put("/products/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const { name, price, description, image } = req.body;
+//   const updatedProduct = await prisma.product.update({
+//     where: {
+//       id: parseInt(id),
+//     },
+//     data: {
+//       name,
+//       price,
+//       description,
+//       image,
+//     },
+//   });
+//   res.json(updatedProduct);
+// });
 
 // PATCH Endpoint untuk memperbarui sebagian informasi produk berdasarkan ID
-app.patch("/products/:id", async (req, res) => {
-  const { id } = req.params;
-  const { name, price, description, image } = req.body;
-  const updatedProduct = await prisma.product.update({
-    where: {
-      id: parseInt(id),
-    },
-    data: {
-      name: name ? name : undefined,
-      price: price ? price : undefined,
-      description: description ? description : undefined,
-      image: image ? image : undefined,
-    },
-  });
-  res.json(updatedProduct);
-});
+// app.patch("/products/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const { name, price, description, image } = req.body;
+//   const updatedProduct = await prisma.product.update({
+//     where: {
+//       id: parseInt(id),
+//     },
+//     data: {
+//       name: name ? name : undefined,
+//       price: price ? price : undefined,
+//       description: description ? description : undefined,
+//       image: image ? image : undefined,
+//     },
+//   });
+//   res.json(updatedProduct);
+// });
 
 // DELETE Endpoint untuk menghapus produk berdasarkan ID
-app.delete("/products/:id", async (req, res) => {
-  const { id } = req.params;
-  await prisma.product.delete({
-    where: {
-      id: parseInt(id),
-    },
-  });
-  res.send("Produk berhasil dihapus");
-});
+// app.delete("/products/:id", async (req, res) => {
+//   const { id } = req.params;
+//   await prisma.product.delete({
+//     where: {
+//       id: parseInt(id),
+//     },
+//   });
+//   res.send("Produk berhasil dihapus");
+// });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
