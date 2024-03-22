@@ -6,17 +6,24 @@ const prisma = new PrismaClient();
 
 const productRoute = require("./products/route");
 
+// Load environment variables from .env file
+
 dotenv.config();
 const PORT = process.env.PORT;
 
 app.use(express.json()); // Middleware for parsing JSON bodies
 
 // GET Endpoint untuk menampilkan selamat datang di API
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Selamat Datang di API ini!");
 });
 
 app.use(productRoute);
+
+// Start the server
+app.listen(PORT, () => {
+  console.log("Example app listening on port " + PORT);
+});
 
 // GET Endpoint untuk menampilkan semua produk
 // app.get("/products", async (req, res) => {
@@ -86,6 +93,4 @@ app.use(productRoute);
 //   res.send("Produk berhasil dihapus");
 // });
 
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
-});
+
